@@ -1,0 +1,29 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+
+spring:
+  application:
+    name: recarga-api
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/recarga}
+    # No macOS com Homebrew o usuário padrão do PostgreSQL é o usuário do sistema (não "postgres")
+    username: ${SPRING_DATASOURCE_USERNAME:${user.name}}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:dev-secret-must-be-at-least-32-bytes-long-for-hs256}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
