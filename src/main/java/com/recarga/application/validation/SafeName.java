@@ -16,7 +16,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = SafeNameValidator.class)
 public @interface SafeName {
 
-    String message() default "Name can only contain letters, spaces, hyphen and apostrophe";
+    String message() default "Nome pode conter apenas letras, espaços, hífen e apóstrofo";
 
     Class<?>[] groups() default {};
 

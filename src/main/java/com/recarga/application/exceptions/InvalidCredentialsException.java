@@ -3,6 +3,6 @@ package com.recarga.application.exceptions;
 public class InvalidCredentialsException extends RuntimeException {
 
     public InvalidCredentialsException() {
-        super("Invalid credentials");
+        super("Credenciais inválidas");
     }
 }

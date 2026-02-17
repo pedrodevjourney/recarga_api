@@ -16,7 +16,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = StrongPasswordValidator.class)
 public @interface StrongPassword {
 
-    String message() default "Password must contain at least one letter and one digit";
+    String message() default "Senha deve conter pelo menos uma letra e um número";
 
     Class<?>[] groups() default {};
 
