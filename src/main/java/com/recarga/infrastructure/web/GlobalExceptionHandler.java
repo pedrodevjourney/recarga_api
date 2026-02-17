@@ -1,5 +1,6 @@
 package com.recarga.infrastructure.web;
 
+import com.recarga.application.exceptions.CatalogEntryNotFoundException;
 import com.recarga.application.exceptions.EmailAlreadyExistsException;
 import com.recarga.application.exceptions.InvalidCredentialsException;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidCredentialsException.class)
     public ResponseEntity<Map<String, String>> handleInvalidCredentials() {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "Credenciais inválidas"));
+    }
+
+    @ExceptionHandler(CatalogEntryNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleCatalogEntryNotFound() {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Veículo do catálogo não encontrado"));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
